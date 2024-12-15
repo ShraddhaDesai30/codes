@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int buttonWithLongestTime(vector<vector<int>>& events) {
+        int ans = events[0][1], idx = events[0][0];
+        for (int i = 1; i < events.size(); i++) {
+            int cur = (events[i][1] - events[i - 1][1]);
+            if (cur > ans) {
+                ans = cur;
+                idx = events[i][0];
+            }
+            if (cur == ans)
+                idx = min(events[i][0], idx);
+        }
+        return idx;
+    }
+};
