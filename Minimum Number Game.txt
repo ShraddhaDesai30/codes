@@ -1,0 +1,26 @@
+class Solution {
+public:
+    std::vector<int> numberGame(std::vector<int>& nums) {
+        // Sort the input array
+        std::sort(nums.begin(), nums.end());
+        
+        std::vector<int> arr;
+        
+        // Process the array in rounds
+        while (!nums.empty()) {
+            // Alice removes the smallest element
+            int alice_min = nums[0];
+            nums.erase(nums.begin());  // Remove the first element
+            
+            // Bob removes the next smallest element
+            int bob_min = nums[0];
+            nums.erase(nums.begin());  // Remove the first element again
+            
+            // Append Bob's element first, then Alice's element
+            arr.push_back(bob_min);
+            arr.push_back(alice_min);
+        }
+        
+        return arr;
+    }
+};
